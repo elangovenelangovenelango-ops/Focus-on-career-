@@ -25,6 +25,12 @@
             top: 0;
             z-index: 100;
         }
+        .creator-name {
+            font-size: 13px;
+            font-weight: normal;
+            color: #dcd6f7;
+            margin-top: 5px;
+        }
         .container {
             max-width: 600px;
             margin: 15px auto;
@@ -37,7 +43,6 @@
             margin-bottom: 15px;
             font-weight: bold;
         }
-        /* Subject Cards */
         details {
             background: white;
             margin-bottom: 12px;
@@ -73,7 +78,6 @@
         details[open] summary::after {
             content: '-';
         }
-        /* Units inside Subject */
         .unit-list {
             padding: 10px 20px 20px 20px;
             background-color: #fafafa;
@@ -93,11 +97,20 @@
         .unit-item:hover {
             background-color: #eef0ff;
         }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="header">TN 11th Guide (All Subjects)</div>
+    <div class="header">
+        TN 11th Guide (All Subjects)
+        <div class="creator-name">Developed by EJ Seliyan</div>
+    </div>
 
     <div class="container">
         <div class="section-title">All Subjects (அனைத்துப் பாடங்களும்)</div>
@@ -106,7 +119,7 @@
         <details>
             <summary>தமிழ் (Tamil)</summary>
             <div class="unit-list">
-                <a href="#" class="unit-item">இயல் 1 - யுகத்தின் பாடல்</a>
+                <a href="tamil-unit1.html" class="unit-item">இயல் 1 - யுகத்தின் பாடல்</a>
                 <a href="#" class="unit-item">இயல் 2 - இயற்கை வேளாண்மை</a>
                 <a href="#" class="unit-item">இயல் 3 - உரைநடை உலகம்</a>
             </div>
@@ -118,7 +131,6 @@
             <div class="unit-list">
                 <a href="#" class="unit-item">Unit 1 - The Portrait of a Lady</a>
                 <a href="#" class="unit-item">Unit 2 - The Queen of Boxing</a>
-                <a href="#" class="unit-item">Unit 3 - Confessions of a Born Spectator</a>
             </div>
         </details>
 
@@ -176,6 +188,10 @@
             </div>
         </details>
 
+    </div>
+
+    <div class="footer">
+        &copy; 2026 TN 11th Guide | Designed by <strong>EJ Seliyan</strong>
     </div>
 
 </body>
