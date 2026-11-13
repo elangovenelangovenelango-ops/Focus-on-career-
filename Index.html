@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123c69">
+<title>Focus on Career</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+header{background:linear-gradient(135deg,#123c69,#2563eb);color:white;padding:25px;text-align:center}
+main{padding:20px;max-width:800px;margin:auto}
+.card{background:white;padding:20px;margin:15px 0;border-radius:15px;box-shadow:0 3px 12px #ddd}
+button{background:#2563eb;color:white;border:0;padding:12px 18px;border-radius:10px;font-size:16px}
+button:active{opacity:.8}
+.hidden{display:none}
+input,textarea{width:100%;padding:12px;margin:10px 0;box-sizing:border-box;border:1px solid #ccc;border-radius:8px}
+footer{text-align:center;padding:20px;color:#777}
+</style>
+</head>
+<body>
+<header>
+<h1>Focus on Career 🎓</h1>
+<p>உங்கள் எதிர்காலத்திற்கான வழிகாட்டி</p>
+</header>
+<main>
+<div class="card">
+<h2>வணக்கம் மாணவர்களே! 👋</h2>
+<p>11 மற்றும் 12ஆம் வகுப்பு மாணவர்களுக்கான கல்வி வழிகாட்டி.</p>
+</div>
+<div class="card">
+<h2>📘 11ஆம் வகுப்பு</h2>
+<p>பாடங்கள், Group தேர்வு மற்றும் படிப்பு வழிகாட்டி.</p>
+<button onclick="show('eleven')">திறக்க</button>
+</div>
+<div class="card">
+<h2>📗 12ஆம் வகுப்பு</h2>
+<p>உயர்கல்வி மற்றும் கல்லூரி வழிகாட்டி.</p>
+<button onclick="show('twelve')">திறக்க</button>
+</div>
+<div class="card">
+<h2>🎯 Career Guidance</h2>
+<p>உங்களுக்கான எதிர்கால வேலைவாய்ப்புகள்.</p>
+<button onclick="show('career')">திறக்க</button>
+</div>
+<div class="card">
+<h2>⭐ My Notes</h2>
+<input id="title" placeholder="தலைப்பு">
+<textarea id="note" placeholder="உங்கள் குறிப்புகளை எழுதுங்கள்"></textarea>
+<button onclick="saveNote()">சேமிக்க</button>
+<div id="notes"></div>
+</div>
+<div class="card hidden" id="details">
+<button onclick="hide()">← முகப்பு</button>
+<h2 id="detailTitle"></h2>
+<p id="detailText"></p>
+</div>
+</main>
+<footer>Focus on Career © 2026</footer>
+<script>
+function show(type){
+let data={
+eleven:["11ஆம் வகுப்பு","Science, Commerce, Arts போன்ற Group-கள் மற்றும் பாடங்களை ஆசிரியருடன் ஆலோசித்து தேர்வு செய்யுங்கள்."],
+twelve:["12ஆம் வகுப்பு","12ஆம் வகுப்புக்குப் பிறகு கல்லூரி, Diploma மற்றும் உயர்கல்வி வாய்ப்புகளை ஆராயுங்கள்."],
+career:["Career Guidance","Engineering, Arts, Science, Commerce, IT மற்றும் Government Services போன்ற துறைகளை ஆராயுங்கள்."]
+};
+document.getElementById("detailTitle").textContent=data[type][0];
+document.getElementById("detailText").textContent=data[type][1];
+document.getElementById("details").classList.remove("hidden");
+document.getElementById("details").scrollIntoView({behavior:"smooth"});
+}
+function hide(){document.getElementById("details").classList.add("hidden")}
+function saveNote(){
+let t=document.getElementById("title").value.trim();
+let n=document.getElementById("note").value.trim();
+if(!t||!n){alert("தலைப்பும் குறிப்புகளும் எழுதுங்கள்");return}
+let a=JSON.parse(localStorage.getItem("myNotes")||"[]");
+a.unshift({t,n});
+localStorage.setItem("myNotes",JSON.stringify(a));
+document.getElementById("title").value="";
+document.getElementById("note").value="";
+render();
+}
+function render(){
+let a=JSON.parse(localStorage.getItem("myNotes")||"[]");
+document.getElementById("notes").innerHTML=a.map(x=>"<div class='card'><b>"+escapeHTML(x.t)+"</b><p>"+escapeHTML(x.n)+"</p></div>").join("");
+}
+function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+render();
+</script>
+</body>
+  </html>
