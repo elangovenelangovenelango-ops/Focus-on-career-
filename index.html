@@ -1,200 +1,418 @@
+
 <!DOCTYPE html>
 <html lang="ta">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TN 11th Guide - All Subjects</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f5f7;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        /* App Header */
-        .header {
-            background-color: #2b1392;
-            color: white;
-            padding: 18px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .creator-name {
-            font-size: 13px;
-            font-weight: normal;
-            color: #dcd6f7;
-            margin-top: 5px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 15px auto;
-            padding: 0 15px;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-        details {
-            background: white;
-            margin-bottom: 12px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-        summary {
-            padding: 16px 20px;
-            font-size: 17px;
-            font-weight: 600;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        summary::-webkit-details-marker {
-            display: none;
-        }
-        summary::after {
-            content: '+';
-            background-color: #2b1392;
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-        details[open] summary::after {
-            content: '-';
-        }
-        .unit-list {
-            padding: 10px 20px 20px 20px;
-            background-color: #fafafa;
-            border-top: 1px solid #eee;
-        }
-        .unit-item {
-            display: block;
-            padding: 12px;
-            margin-top: 8px;
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            text-decoration: none;
-            color: #2b1392;
-            font-weight: 500;
-        }
-        .unit-item:hover {
-            background-color: #eef0ff;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 14px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#263b91">
+<title>Focus on Career</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#f3f5fb;
+ color:#222;
+}
+header{
+ background:linear-gradient(135deg,#263b91,#536ee5);
+ color:white;
+ text-align:center;
+ padding:25px 12px;
+}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0 0}
+.container{max-width:750px;margin:auto;padding:15px}
+.title{font-size:20px;font-weight:bold;margin:22px 0 12px}
+.classes,.mediums{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+}
+.mediums{grid-template-columns:repeat(2,1fr)}
+.card{
+ border:0;
+ background:white;
+ border-radius:14px;
+ padding:18px 8px;
+ font-size:17px;
+ font-weight:bold;
+ color:#263b91;
+ box-shadow:0 2px 8px #ddd;
+ cursor:pointer;
+}
+.card.active{
+ background:#263b91;
+ color:white;
+}
+.mediums .card{padding:20px 5px}
+.search{
+ width:100%;
+ padding:14px;
+ border:1px solid #ddd;
+ border-radius:12px;
+ font-size:16px;
+ margin:12px 0;
+}
+.subjects{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+.subject{
+ background:white;
+ border:0;
+ border-radius:13px;
+ padding:17px 12px;
+ text-align:left;
+ font-size:16px;
+ font-weight:bold;
+ box-shadow:0 2px 8px #ddd;
+ cursor:pointer;
+}
+.subject span{
+ display:block;
+ font-size:12px;
+ color:#777;
+ margin-top:7px;
+}
+.chapter{
+ background:white;
+ padding:16px;
+ margin:11px 0;
+ border-radius:12px;
+ box-shadow:0 2px 7px #ddd;
+}
+button.action{
+ background:#263b91;
+ color:white;
+ border:0;
+ padding:11px 15px;
+ border-radius:8px;
+ margin-top:8px;
+ cursor:pointer;
+}
+.back{
+ background:#555;
+ color:white;
+ border:0;
+ padding:11px 18px;
+ border-radius:8px;
+ margin:10px 0;
+}
+.resource{
+ background:#eef2ff;
+ padding:13px;
+ border-radius:10px;
+ margin-top:10px;
+}
+.resource a{
+ color:#263b91;
+ font-weight:bold;
+}
+footer{
+ background:#202d68;
+ color:white;
+ text-align:center;
+ padding:28px 12px;
+ margin-top:30px;
+}
+footer a{
+ display:inline-block;
+ background:#e62117;
+ color:white;
+ padding:12px 20px;
+ border-radius:25px;
+ text-decoration:none;
+ font-weight:bold;
+ margin:10px;
+}
+.hidden{display:none!important}
+.note{font-size:13px;color:#777;line-height:1.6}
+</style>
 </head>
+
 <body>
 
-    <div class="header">
-        TN 11th Guide (All Subjects)
-        <div class="creator-name">Developed by EJ Seliyan</div>
-    </div>
+<header>
+<h1>📚 Focus on Career</h1>
+<p>Learn • Practice • Succeed</p>
+<p>10th | 11th | 12th Standard</p>
+</header>
 
-    <div class="container">
-        <div class="section-title">All Subjects (அனைத்துப் பாடங்களும்)</div>
+<div class="container">
 
-        <!-- 1. தமிழ் -->
-        <details>
-            <summary>தமிழ் (Tamil)</summary>
-            <div class="unit-list">
-                <a href="tamil-unit1.html" class="unit-item">இயல் 1 - யுகத்தின் பாடல்</a>
-                <a href="#" class="unit-item">இயல் 2 - இயற்கை வேளாண்மை</a>
-                <a href="#" class="unit-item">இயல் 3 - உரைநடை உலகம்</a>
-            </div>
-        </details>
+<!-- MEDIUM SELECTION -->
+<div id="home">
 
-        <!-- 2. English -->
-        <details>
-            <summary>English</summary>
-            <div class="unit-list">
-                <a href="#" class="unit-item">Unit 1 - The Portrait of a Lady</a>
-                <a href="#" class="unit-item">Unit 2 - The Queen of Boxing</a>
-            </div>
-        </details>
+<div class="title">🌐 Select Medium / பயிற்று மொழி</div>
 
-        <!-- 3. இயற்பியல் -->
-        <details>
-            <summary>இயற்பியல் (Physics)</summary>
-            <div class="unit-list">
-                <a href="#" class="unit-item">Unit 1 - Nature of Physical World and Measurement</a>
-                <a href="#" class="unit-item">Unit 2 - Kinematics</a>
-            </div>
-        </details>
+<div class="mediums">
+<button class="card active" onclick="selectMedium('TM',this)">
+தமிழ் வழி
+<br><small>Tamil Medium</small>
+</button>
 
-        <!-- 4. வேதியியல் -->
-        <details>
-            <summary>வேதியியல் (Chemistry)</summary>
-            <div class="unit-list">
-                <a href="#" class="unit-item">Unit 1 - Basic Concepts of Chemistry</a>
-                <a href="#" class="unit-item">Unit 2 - Quantum Mechanical Model of Atom</a>
-            </div>
-        </details>
+<button class="card" onclick="selectMedium('EM',this)">
+English Medium
+<br><small>ஆங்கில வழி</small>
+</button>
+</div>
 
-        <!-- 5. கணிதம் -->
-        <details>
-            <summary>கணிதம் (Mathematics)</summary>
-            <div class="unit-list">
-                <a href="#" class="unit-item">Chapter 1 - Sets, Relations and Functions</a>
-                <a href="#" class="unit-item">Chapter 2 - Basic Algebra</a>
-            </div>
-        </details>
+<!-- CLASS SELECTION -->
+<div class="title">🎓 Select Your Class</div>
 
-        <!-- 6. கணினி அறிவியல் -->
-        <details>
-            <summary>கணினி அறிவியல் (Computer Science)</summary>
-            <div class="unit-list">
-                <a href="#" class="unit-item">Chapter 1 - Introduction to Computers</a>
-                <a href="#" class="unit-item">Chapter 2 - Number Systems</a>
-            </div>
-        </details>
+<div class="classes">
+<button class="card active" onclick="selectClass(10,this)">10th</button>
+<button class="card" onclick="selectClass(11,this)">11th</button>
+<button class="card" onclick="selectClass(12,this)">12th</button>
+</div>
 
-        <!-- 7. உயிரி தாவரவியல் -->
-        <details>
-            <summary>உயிரி தாவரவியல் (Bio-Botany)</summary>
-            <div class="unit-list">
-                <a href="#" class="unit-item">Chapter 1 - Living World</a>
-                <a href="#" class="unit-item">Chapter 2 - Plant Kingdom</a>
-            </div>
-        </details>
+<div class="title">📖 All Subjects Guide</div>
 
-        <!-- 8. உயிரி விலங்கியல் -->
-        <details>
-            <summary>உயிரி விலங்கியல் (Bio-Zoology)</summary>
-            <div class="unit-list">
-                <a href="#" class="unit-item">Chapter 1 - The Living World</a>
-                <a href="#" class="unit-item">Chapter 2 - Kingdom Animalia</a>
-            </div>
-        </details>
+<input class="search" id="search"
+placeholder="Search Subject / பாடத்தைத் தேடுங்கள்..."
+oninput="showSubjects()">
 
-    </div>
+<div class="subjects" id="subjectList"></div>
+</div>
 
-    <div class="footer">
-        &copy; 2026 TN 11th Guide | Designed by <strong>EJ Seliyan</strong>
-    </div>
+<!-- CHAPTER PAGE -->
+<div id="chaptersPage" class="hidden">
+<button class="back" onclick="goHome()">← Back</button>
+<div class="title" id="subjectTitle"></div>
+<p>📚 Select Chapter / பாடத்தைத் தேர்வு செய்யவும்</p>
+<div id="chapterList"></div>
+</div>
 
+<!-- MATERIAL PAGE -->
+<div id="materialPage" class="hidden">
+<button class="back" onclick="goChapters()">← Back</button>
+
+<div class="title" id="chapterTitle"></div>
+
+<div class="chapter">
+<h3>📘 Study Materials</h3>
+<p>Chapter-wise Study Materials</p>
+<div id="studyArea"></div>
+</div>
+
+<div class="chapter">
+<h3>📝 Notes / குறிப்புகள்</h3>
+<div id="notesArea"></div>
+</div>
+
+<div class="chapter">
+<h3>📚 Books / பாடப்புத்தகங்கள்</h3>
+<div id="booksArea"></div>
+</div>
+
+<div class="chapter">
+<h3>⭐ Important Questions</h3>
+<div id="questionsArea"></div>
+</div>
+
+<div class="chapter">
+<h3>📄 PDF Download</h3>
+<div id="pdfArea"></div>
+</div>
+
+<div class="chapter">
+<h3>📝 Model Question Papers</h3>
+<div id="modelArea"></div>
+</div>
+
+<p class="note">
+Study materials and PDF links will be updated here.
+</p>
+</div>
+
+</div>
+
+<footer>
+<h2>📚 Focus on Career</h2>
+<p>Developed by EJ Seliyan</p>
+<a href="https://www.youtube.com/results?search_query=_badboy1"
+target="_blank">
+▶ Subscribe to _badboy1 YouTube Channel
+</a>
+<p>© 2026 Focus on Career | All Rights Reserved</p>
+</footer>
+
+<script>
+
+// SUBJECT DATABASE
+const subjectData={
+10:[
+["தமிழ்","Tamil"],
+["ஆங்கிலம்","English"],
+["கணிதம்","Mathematics"],
+["அறிவியல்","Science"],
+["சமூக அறிவியல்","Social Science"]
+],
+11:[
+["தமிழ்","Tamil"],
+["ஆங்கிலம்","English"],
+["கணிதம்","Mathematics"],
+["இயற்பியல்","Physics"],
+["வேதியியல்","Chemistry"],
+["தாவரவியல்","Bio-Botany"],
+["விலங்கியல்","Bio-Zoology"],
+["கணினி அறிவியல்","Computer Science"],
+["கணினி பயன்பாடுகள்","Computer Applications"],
+["வணிகவியல்","Commerce"],
+["கணக்குப்பதிவியல்","Accountancy"],
+["பொருளியல்","Economics"],
+["வணிகக் கணிதம்","Business Mathematics"],
+["வரலாறு","History"],
+["புவியியல்","Geography"],
+["அரசியல் அறிவியல்","Political Science"]
+],
+12:[
+["தமிழ்","Tamil"],
+["ஆங்கிலம்","English"],
+["கணிதம்","Mathematics"],
+["இயற்பியல்","Physics"],
+["வேதியியல்","Chemistry"],
+["தாவரவியல்","Bio-Botany"],
+["விலங்கியல்","Bio-Zoology"],
+["கணினி அறிவியல்","Computer Science"],
+["கணினி பயன்பாடுகள்","Computer Applications"],
+["வணிகவியல்","Commerce"],
+["கணக்குப்பதிவியல்","Accountancy"],
+["பொருளியல்","Economics"],
+["வணிகக் கணிதம்","Business Mathematics"],
+["வரலாறு","History"],
+["புவியியல்","Geography"],
+["அரசியல் அறிவியல்","Political Science"]
+]
+};
+
+let currentClass=10;
+let currentMedium="TM";
+let currentSubject="";
+let currentChapter=1;
+
+function selectMedium(m,btn){
+currentMedium=m;
+document.querySelectorAll(".mediums .card")
+.forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+showSubjects();
+}
+
+function selectClass(n,btn){
+currentClass=n;
+document.querySelectorAll(".classes .card")
+.forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+showSubjects();
+}
+
+function showSubjects(){
+let list=document.getElementById("subjectList");
+let search=document.getElementById("search").value.toLowerCase();
+list.innerHTML="";
+
+subjectData[currentClass].forEach(s=>{
+let name=currentMedium==="TM"?s[0]:s[1];
+
+if(!name.toLowerCase().includes(search) &&
+!s[0].toLowerCase().includes(search) &&
+!s[1].toLowerCase().includes(search))return;
+
+let b=document.createElement("button");
+b.className="subject";
+b.innerHTML="📘 "+name+
+"<span>Class "+currentClass+" • "+
+(currentMedium==="TM"?"தமிழ் வழி":"English Medium")+
+"</span>";
+b.onclick=()=>openSubject(name);
+list.appendChild(b);
+});
+}
+
+function openSubject(name){
+currentSubject=name;
+
+document.getElementById("home").classList.add("hidden");
+document.getElementById("chaptersPage").classList.remove("hidden");
+
+document.getElementById("subjectTitle").innerText=
+"Class "+currentClass+" • "+name;
+
+let list=document.getElementById("chapterList");
+list.innerHTML="";
+
+for(let i=1;i<=15;i++){
+let div=document.createElement("div");
+div.className="chapter";
+
+let btn=document.createElement("button");
+btn.className="action";
+btn.innerText="Open Study Material";
+btn.onclick=()=>openChapter(i);
+
+let heading=document.createElement("b");
+heading.innerText="Chapter "+i;
+
+div.appendChild(heading);
+div.appendChild(document.createElement("br"));
+div.appendChild(btn);
+list.appendChild(div);
+}
+}
+
+function openChapter(n){
+currentChapter=n;
+
+document.getElementById("chaptersPage").classList.add("hidden");
+document.getElementById("materialPage").classList.remove("hidden");
+
+document.getElementById("chapterTitle").innerText=
+currentSubject+" • Chapter "+n;
+
+let message=currentMedium==="TM"?
+"தமிழ் வழி பாடக்குறிப்புகள் விரைவில் சேர்க்கப்படும்.":
+"English medium study materials will be added soon.";
+
+["studyArea","notesArea","booksArea",
+"questionsArea","pdfArea","modelArea"].forEach(id=>{
+document.getElementById(id).innerText=message;
+});
+
+// Existing PDF available in repository
+if(currentClass===11 &&
+currentMedium==="TM" &&
+currentSubject==="தாவரவியல்" &&
+n===1){
+
+let a=document.createElement("a");
+a.href="11th%20Bio-Botany%20TM%20Practical%20notes.pdf";
+a.download="";
+a.innerText="Download Botany Practical Notes PDF";
+
+document.getElementById("pdfArea").innerHTML="";
+document.getElementById("pdfArea").appendChild(a);
+}
+}
+
+function goHome(){
+document.getElementById("chaptersPage").classList.add("hidden");
+document.getElementById("materialPage").classList.add("hidden");
+document.getElementById("home").classList.remove("hidden");
+}
+
+function goChapters(){
+document.getElementById("materialPage").classList.add("hidden");
+document.getElementById("chaptersPage").classList.remove("hidden");
+}
+
+showSubjects();
+
+</script>
 </body>
-</html>
+    </html>
 
-  
+            
