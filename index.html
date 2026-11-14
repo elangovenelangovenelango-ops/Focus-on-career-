@@ -361,4 +361,742 @@ showPage("home");
 </script>
 </body>
  </html>
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus on Career - Study Guide</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f9;
+  color:#202124;
+}
+header{
+  background:#293f91;
+  color:white;
+  padding:22px 15px;
+  text-align:center;
+}
+header h2{margin:0 0 8px}
+header p{margin:5px}
+.container{padding:20px;max-width:850px;margin:auto}
+.hidden{display:none!important}
+.card{
+  background:white;
+  padding:25px;
+  margin:18px 0;
+  border-radius:22px;
+  box-shadow:0 4px 12px #00000012;
+}
+h2{font-size:25px}
+h3{font-size:21px}
+p{font-size:17px;line-height:1.6}
+button,.btn{
+  display:inline-block;
+  border:0;
+  border-radius:12px;
+  padding:14px 18px;
+  background:#293f91;
+  color:white;
+  font-size:16px;
+  margin:6px 4px;
+  cursor:pointer;
+  text-decoration:none;
+}
+button:hover,.btn:hover{opacity:.85}
+.back{background:#555}
+select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:17px;
+  margin:10px 0;
+  background:white;
+}
+.subject{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin:12px 0;
+  box-shadow:0 3px 9px #0001;
+  font-size:19px;
+  cursor:pointer;
+}
+.subject:hover{background:#eef1ff}
+.material{
+  background:white;
+  padding:22px;
+  border-radius:20px;
+  margin:18px 0;
+  box-shadow:0 4px 12px #0001;
+}
+.material h3{margin-top:5px}
+.material a{
+  display:inline-block;
+  background:#293f91;
+  color:white;
+  padding:12px 15px;
+  margin:8px 5px 0 0;
+  border-radius:10px;
+  text-decoration:none;
+}
+.material .download{background:#16834a}
+
+/* QUESTION AND ANSWER */
+.qa-section{
+  background:white;
+  padding:20px;
+  border-radius:18px;
+  margin:18px 0;
+  box-shadow:0 4px 12px #0001;
+}
+.qa-heading{
+  background:#293f91;
+  color:white;
+  padding:13px;
+  border-radius:10px;
+  font-size:19px;
+}
+.qa-item{
+  border:1px solid #e1e4ed;
+  padding:15px;
+  margin:13px 0;
+  border-radius:12px;
+  background:#fafbff;
+}
+.question{
+  font-size:17px;
+  font-weight:bold;
+  line-height:1.6;
+}
+.answer{
+  display:none;
+  background:#eaf7ee;
+  border-left:4px solid #16834a;
+  padding:13px;
+  margin-top:12px;
+  border-radius:8px;
+  line-height:1.7;
+  font-size:16px;
+}
+.answer.show{display:block}
+.answer-btn{
+  background:#16834a;
+  padding:9px 13px;
+  font-size:14px;
+}
+.option{
+  display:block;
+  background:#f0f2f8;
+  color:#202124;
+  text-align:left;
+  width:100%;
+  margin:8px 0;
+  padding:12px;
+  border:1px solid #ddd;
+}
+.option.selected{border:2px solid #293f91}
+.quiz-result{
+  background:#eaf7ee;
+  padding:15px;
+  border-radius:10px;
+  margin-top:15px;
+  display:none;
+}
+footer{
+  text-align:center;
+  padding:25px;
+  background:#293f91;
+  color:white;
+  margin-top:30px;
+}
+footer a{color:#ffeb65}
+</style>
+</head>
+
+<body>
+
+<header>
+<h2>📚 Focus on Career</h2>
+<p>TN School Study Materials</p>
+<p>Tamil Medium | English Medium</p>
+</header>
+
+<div class="container">
+
+<section id="home">
+<div class="card">
+<h2>🎓 Welcome Students!</h2>
+<p>Choose Your Class / உங்கள் வகுப்பை தேர்வு செய்யுங்கள்</p>
+<button onclick="selectClass(10)">10th Standard</button>
+<button onclick="selectClass(11)">11th Standard</button>
+<button onclick="selectClass(12)">12th Standard</button>
+</div>
+</section>
+
+<section id="mediumPage" class="hidden">
+<button class="back" onclick="goHome()">⬅ Back</button>
+<div class="card">
+<h2>🌐 Select Medium</h2>
+<button onclick="selectMedium('TM')">தமிழ் வழி (Tamil Medium)</button>
+<button onclick="selectMedium('EM')">English Medium</button>
+</div>
+</section>
+
+<section id="subjectsPage" class="hidden">
+<button class="back" onclick="goHome()">⬅ Home</button>
+<div class="card">
+<h2 id="subjectTitle">Subjects</h2>
+<div id="subjectList"></div>
+</div>
+</section>
+
+<section id="chaptersPage" class="hidden">
+<button class="back" onclick="goSubjects()">⬅ Subjects</button>
+<div class="card">
+<h2 id="chaptersTitle">Chapters</h2>
+<div id="chapterList"></div>
+</div>
+</section>
+
+<section id="materialPage" class="hidden">
+<button class="back" onclick="goChapters()">⬅ Chapters</button>
+<button class="back" onclick="goHome()">🏠 Home</button>
+
+<h2 id="chapterTitle"></h2>
+
+<div class="material" id="studyArea">
+<h3>📘 Study Materials</h3>
+</div>
+
+<div class="material" id="notesArea">
+<h3>📝 Notes / குறிப்புகள்</h3>
+</div>
+
+<div class="material" id="booksArea">
+<h3>📚 Books / பாடப்புத்தகங்கள்</h3>
+</div>
+
+<div class="material" id="guideArea">
+<h3>📕 Extra Books + Guides</h3>
+</div>
+
+<div class="material" id="questionsArea">
+<h3>⭐ Important Questions</h3>
+</div>
+
+<!-- NEW QUESTION ANSWER AREA -->
+<div id="qaArea"></div>
+
+<!-- NEW ONLINE QUIZ AREA -->
+<div class="material" id="quizArea">
+<h3>🧠 Online Quiz</h3>
+<div id="quizContent"></div>
+</div>
+
+<div class="material" id="pdfArea">
+<h3>📄 PDF Materials</h3>
+</div>
+
+<div class="material" id="modelArea">
+<h3>📝 Model Question Papers</h3>
+</div>
+
+</section>
+
+</div>
+
+<footer>
+<h3>Developed by EJ Seliyan</h3>
+<p>Subscribe to
+<a href="https://www.youtube.com/results?search_query=_badboy1" target="_blank">
+_badboy1 YouTube Channel</a></p>
+<p>© Focus on Career</p>
+</footer>
+
+<script>
+
+let currentClass=11;
+let currentMedium="TM";
+let currentSubject="";
+let currentChapter=1;
+
+const subjects={
+10:{
+TM:["தமிழ்","ஆங்கிலம்","கணிதம்","அறிவியல்","சமூக அறிவியல்"],
+EM:["Tamil","English","Mathematics","Science","Social Science"]
+},
+11:{
+TM:["தமிழ்","ஆங்கிலம்","கணிதம்","இயற்பியல்","வேதியியல்","தாவரவியல்","விலங்கியல்","கணினி அறிவியல்","வணிகவியல்","கணக்குப்பதிவியல்","பொருளியல்"],
+EM:["Tamil","English","Mathematics","Physics","Chemistry","Botany","Zoology","Computer Science","Commerce","Accountancy","Economics"]
+},
+12:{
+TM:["தமிழ்","ஆங்கிலம்","கணிதம்","இயற்பியல்","வேதியியல்","தாவரவியல்","விலங்கியல்","கணினி அறிவியல்","வணிகவியல்","கணக்குப்பதிவியல்","பொருளியல்"],
+EM:["Tamil","English","Mathematics","Physics","Chemistry","Botany","Zoology","Computer Science","Commerce","Accountancy","Economics"]
+}
+};
+
+/*
+11ஆம் வகுப்பு தமிழ் - இயல் 1
+PDF பக்கங்கள் 3 முதல் 7 வரை உள்ள
+தகவல்களை அடிப்படையாகக் கொண்ட மாதிரி உள்ளடக்கம்.
+*/
+
+const tamilChapter1={
+
+sections:[
+
+{
+title:"I. பொருத்தமான விடையைத் தேர்ந்தெடுக்க",
+questions:[
+{
+q:"பாயிரம் இல்லாதது எது?",
+a:"காப்பியம்.",
+options:["காப்பியம்","பனுவல்","பாடல்","கவிதை"]
+},
+{
+q:"பாயிரம் எத்தனை வகைப்படும்?",
+a:"இரண்டு வகைப்படும்.",
+options:["ஒரு வகை","இரண்டு வகை","மூன்று வகை","நான்கு வகை"]
+},
+{
+q:"பொதுப்பாயிரம் எத்தனை செய்திகளைக் கூறுகிறது?",
+a:"ஐந்து செய்திகளைக் கூறுகிறது.",
+options:["மூன்று","நான்கு","ஐந்து","ஆறு"]
+},
+{
+q:"மொழி முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+a:"22 எழுத்துகள்.",
+options:["12","18","22","24"]
+}
+]
+},
+
+{
+title:"II. குறுவினா",
+questions:[
+{
+q:"பேச்சுமொழி, எழுத்துமொழியைக் காட்டிலும் உணர்ச்சி வெளிப்பாட்டுச் சக்தி மிக்கது ஏன்?",
+a:"எழுத்துமொழியைக் காட்டிலும் பேச்சுமொழி உணர்ச்சிக்கு மிகவும் நெருக்கமாக உள்ளது. முகம், வாய் மற்றும் உடல் அசைவுகள் மூலம் உணர்ச்சிகளை வெளிப்படுத்த முடிகிறது."
+},
+{
+q:"பாயிரம் என்றால் என்ன?",
+a:"நூலை உருவாக்கும் ஆசிரியரின் சிறப்பையும், அந்த நூல் வழங்கும் கருத்து வளத்தையும் தொகுத்து நூலின் முகப்பில் வைக்கும் முறை பாயிரம் எனப்படும்."
+},
+{
+q:"நன்னூல் குறிப்பிடும் பொதுப்பாயிரச் செய்திகள் யாவை?",
+a:"நூலின் இயல்பு, ஆசிரியரின் இயல்பு, மாணவரின் இயல்பு, கற்பிக்கும் முறை, கற்கும் முறை ஆகிய ஐந்தும் பொதுப்பாயிரச் செய்திகள்."
+},
+{
+q:"மொழி முதலில் வரும் எழுத்துகளின் எண்ணிக்கை எத்தனை?",
+a:"மொழி முதலில் வரும் எழுத்துகள் 22 என PDF-ல் குறிப்பிடப்பட்டுள்ளது."
+}
+]
+},
+
+{
+title:"III. சிறுவினா",
+questions:[
+{
+q:"சு. வில்வரத்தினம் பாடத்தான் வேண்டும் என எவற்றைக் குறிப்பிடுகிறார்?",
+a:"தமிழன்னையின் சிறப்பையும், தமிழின் புகழையும் காலங்களைக் கடந்து பரப்ப வேண்டும் என்பதைக் குறிப்பிடுகிறார். தமிழின் பெருமையைப் போற்றிப் பாட வேண்டும் என்பதே பாடலின் மையக்கருத்தாகும்."
+},
+{
+q:"பாயிரம் பற்றி நீங்கள் அறியும் கருத்து யாது?",
+a:"ஒரு நூலை உருவாக்கிய ஆசிரியரின் சிறப்பையும், நூல் கூறும் கருத்து வளத்தையும் தொகுத்து நூலின் முகப்பில் வைப்பது பாயிரம் ஆகும். இது பொதுப்பாயிரம், சிறப்புப்பாயிரம் என இரு வகைப்படும்."
+},
+{
+q:"குறியீட்டுக் கவிதை என்றால் என்ன?",
+a:"ஒரு கருத்தை மறைத்தோ, மிகைப்படுத்தியோ, அழுத்தமாகவோ வெளிப்படுத்த இலக்கியத்தில் பயன்படுத்தப்படும் உத்தி குறியீடு எனப்படும்."
+}
+]
+},
+
+{
+title:"IV. நெடுவினா",
+questions:[
+{
+q:"நன்னூல் பொதுப்பாயிரம், சிறப்புப்பாயிரம் வாயிலாக அறியப்படும் செய்திகளைத் தொகுத்து எழுதுக.",
+a:"பாயிரம் என்பது நூலின் முகப்பில் இடம்பெறும் அறிமுகப் பகுதியாகும். நூலை உருவாக்கிய ஆசிரியரின் சிறப்பையும், நூல் வழங்கும் கருத்து வளத்தையும் இது எடுத்துரைக்கிறது.\n\nபாயிரம் இரண்டு வகைப்படும்:\n1. பொதுப்பாயிரம்\n2. சிறப்புப்பாயிரம்\n\nபொதுப்பாயிரம் நூலின் இயல்பு, ஆசிரியரின் இயல்பு, மாணவரின் இயல்பு, கற்பிக்கும் முறை, கற்கும் முறை ஆகியவற்றைக் கூறுகிறது.\n\nசிறப்புப்பாயிரம் நூலாசிரியர் பெயர், நூலின் பெயர், நூல் தோன்றிய இடம், காலம், நூலின் கருத்து, யாப்பு போன்ற சிறப்புச் செய்திகளைக் கூறுகிறது."
+}
+]
+},
+
+{
+title:"V. சான்றோர் சித்திரம்",
+questions:[
+{
+q:"'புலமைக் கதிரவன்' என்பதற்கான இலக்கணக் குறிப்பு யாது?",
+a:"உருவகத் தொடர்."
+},
+{
+q:"'விளங்கினார்' என்பதன் பகுபத உறுப்பிலக்கணம் எழுதுக.",
+a:"விளங்கு + இன் + ஆர்.\nவிளங்கு – பகுதி\nஇன் – இறந்தகால இடைநிலை\nஆர் – பலர்பால் வினைமுற்று விகுதி."
+}
+]
+},
+
+{
+title:"VI. தமிழாக்கம்",
+questions:[
+{
+q:"The pen is mightier than the Sword.",
+a:"வாளின் முனையைவிட பேனாவின் முனை வலிமையானது."
+},
+{
+q:"A picture is worth a thousand words.",
+a:"ஒரு படம் ஆயிரம் வார்த்தைகளுக்குச் சமமானது."
+},
+{
+q:"Knowledge rules the world.",
+a:"அறிவே உலகை ஆளும்."
+}
+]
+},
+
+{
+title:"VII. பிறமொழிச் சொற்களைத் தமிழாக்கம் செய்க",
+questions:[
+{
+q:"வாடகை",
+a:"குடிக்கூலி."
+},
+{
+q:"சம்பளம்",
+a:"ஊதியம்."
+},
+{
+q:"ஞாபகம்",
+a:"நினைவு."
+},
+{
+q:"போலீஸ்",
+a:"காவல் துறை."
+}
+]
+}
+
+],
+
+quiz:[
+{
+q:"பாயிரம் எத்தனை வகைப்படும்?",
+options:["ஒரு வகை","இரண்டு வகை","மூன்று வகை","நான்கு வகை"],
+correct:1
+},
+{
+q:"பொதுப்பாயிரத்தில் கூறப்படும் செய்திகளின் எண்ணிக்கை?",
+options:["3","4","5","6"],
+correct:2
+},
+{
+q:"மொழி முதலில் வரும் எழுத்துகளின் எண்ணிக்கை?",
+options:["12","22","24","30"],
+correct:1
+},
+{
+q:"'புலமைக் கதிரவன்' என்பதற்கான இலக்கணக் குறிப்பு?",
+options:["உவமைத் தொடர்","உருவகத் தொடர்","வினைத்தொகை","பண்புத்தொகை"],
+correct:1
+},
+{
+q:"Knowledge rules the world என்பதன் தமிழாக்கம்?",
+options:["உலகம் அறிவை விரும்பும்","அறிவே உலகை ஆளும்","அறிவு ஒரு மொழி","உலகம் ஒரு பள்ளி"],
+correct:1
+}
+]
+
+};
+
+/* PAGE NAVIGATION */
+
+function showPage(id){
+["home","mediumPage","subjectsPage","chaptersPage","materialPage"]
+.forEach(page=>{
+document.getElementById(page).classList.add("hidden");
+});
+document.getElementById(id).classList.remove("hidden");
+}
+
+function selectClass(n){
+currentClass=n;
+showPage("mediumPage");
+}
+
+function selectMedium(m){
+currentMedium=m;
+showSubjects();
+}
+
+function showSubjects(){
+showPage("subjectsPage");
+
+document.getElementById("subjectTitle").innerText=
+currentClass+"th Standard • "+
+(currentMedium==="TM"?"தமிழ் வழி":"English Medium");
+
+let list=document.getElementById("subjectList");
+list.innerHTML="";
+
+subjects[currentClass][currentMedium].forEach(subject=>{
+let div=document.createElement("div");
+div.className="subject";
+div.innerText="📖 "+subject;
+div.onclick=()=>openSubject(subject);
+list.appendChild(div);
+});
+}
+
+function openSubject(subject){
+currentSubject=subject;
+showPage("chaptersPage");
+
+document.getElementById("chaptersTitle").innerText=
+currentSubject+" • Chapters";
+
+let list=document.getElementById("chapterList");
+list.innerHTML="";
+
+for(let i=1;i<=15;i++){
+let btn=document.createElement("button");
+btn.innerText="Chapter "+i;
+btn.onclick=()=>openChapter(i);
+list.appendChild(btn);
+}
+}
+
+/* OPEN CHAPTER */
+
+function openChapter(n){
+currentChapter=n;
+showPage("materialPage");
+
+document.getElementById("chapterTitle").innerText=
+currentSubject+" • Chapter "+n;
+
+const folder=
+"materials/"+currentClass+"/"+currentMedium+"/"+
+encodeURIComponent(currentSubject)+"/chapter-"+n+"/";
+
+const materials=[
+{id:"studyArea",title:"📘 Study Materials",file:"study-material.pdf"},
+{id:"notesArea",title:"📝 Notes / குறிப்புகள்",file:"notes.pdf"},
+{id:"booksArea",title:"📚 Books / பாடப்புத்தகங்கள்",file:"book.pdf"},
+{id:"guideArea",title:"📕 Extra Books + Guides",file:"guide.pdf"},
+{id:"questionsArea",title:"⭐ Important Questions",file:"important-questions.pdf"},
+{id:"pdfArea",title:"📄 PDF Materials",file:"chapter-pdf.pdf"},
+{id:"modelArea",title:"📝 Model Question Papers",file:"model-paper.pdf"}
+];
+
+materials.forEach(item=>{
+let area=document.getElementById(item.id);
+let url=folder+item.file;
+
+area.innerHTML=
+"<h3>"+item.title+"</h3>"+
+'<a href="'+url+'" target="_blank">📖 Open PDF</a>'+
+'<a class="download" href="'+url+'" download>⬇ Download PDF</a>';
+});
+
+/* SHOW PDF-BASED Q&A ONLY FOR 11TH TAMIL TM CHAPTER 1 */
+
+const showTamilQA=
+currentClass===11 &&
+currentMedium==="TM" &&
+currentSubject==="தமிழ்" &&
+n===1;
+
+if(showTamilQA){
+renderQuestions(tamilChapter1);
+renderQuiz(tamilChapter1.quiz);
+}else{
+document.getElementById("qaArea").innerHTML=
+'<div class="material"><h3>📘 Questions & Answers</h3>'+
+'<p>இந்தப் பாடத்திற்கான சரிபார்க்கப்பட்ட கேள்வி–பதில்கள் இன்னும் சேர்க்கப்படவில்லை.</p></div>';
+
+document.getElementById("quizContent").innerHTML=
+"<p>இந்தப் பாடத்திற்கான Quiz விரைவில் சேர்க்கப்படும்.</p>";
+}
+
+/* EXISTING BOTANY PRACTICAL PDF */
+
+if(currentClass===11 &&
+currentMedium==="TM" &&
+currentSubject==="தாவரவியல்" &&
+n===1){
+
+let a=document.createElement("a");
+a.href="11th%20Bio-Botany%20TM%20Practical%20notes.pdf";
+a.target="_blank";
+a.download="";
+a.innerText="⬇ Download Botany Practical Notes PDF";
+
+document.getElementById("pdfArea").appendChild(a);
+}
+}
+
+/* RENDER QUESTIONS AND ANSWERS */
+
+function renderQuestions(data){
+
+let area=document.getElementById("qaArea");
+area.innerHTML="<h2>📖 Questions & Answers / வினா விடைகள்</h2>";
+
+data.sections.forEach((section,index)=>{
+
+let sectionDiv=document.createElement("div");
+sectionDiv.className="qa-section";
+
+let heading=document.createElement("div");
+heading.className="qa-heading";
+heading.innerText=section.title;
+sectionDiv.appendChild(heading);
+
+section.questions.forEach((item,qIndex)=>{
+
+let box=document.createElement("div");
+box.className="qa-item";
+
+let question=document.createElement("div");
+question.className="question";
+question.innerText=(qIndex+1)+". "+item.q;
+box.appendChild(question);
+
+if(item.options){
+item.options.forEach((option,optIndex)=>{
+let p=document.createElement("p");
+p.innerText=String.fromCharCode(65+optIndex)+". "+option;
+box.appendChild(p);
+});
+}
+
+let answer=document.createElement("div");
+answer.className="answer";
+answer.innerText="விடை: "+item.a;
+
+let button=document.createElement("button");
+button.className="answer-btn";
+button.innerText="👁 விடையைப் பார்க்க";
+
+button.onclick=()=>{
+answer.classList.toggle("show");
+button.innerText=answer.classList.contains("show")
+?"விடையை மறைக்க":"👁 விடையைப் பார்க்க";
+};
+
+box.appendChild(button);
+box.appendChild(answer);
+sectionDiv.appendChild(box);
+
+});
+
+area.appendChild(sectionDiv);
+
+});
+
+}
+
+/* ONLINE QUIZ */
+
+function renderQuiz(questions){
+
+let area=document.getElementById("quizContent");
+area.innerHTML="";
+
+let answers={};
+
+questions.forEach((q,index)=>{
+
+let box=document.createElement("div");
+box.className="qa-item";
+
+let title=document.createElement("p");
+title.className="question";
+title.innerText=(index+1)+". "+q.q;
+box.appendChild(title);
+
+q.options.forEach((option,optIndex)=>{
+
+let btn=document.createElement("button");
+btn.className="option";
+btn.innerText=String.fromCharCode(65+optIndex)+". "+option;
+
+btn.onclick=()=>{
+answers[index]=optIndex;
+
+box.querySelectorAll(".option").forEach(b=>{
+b.classList.remove("selected");
+});
+
+btn.classList.add("selected");
+};
+
+box.appendChild(btn);
+
+});
+
+area.appendChild(box);
+
+});
+
+let submit=document.createElement("button");
+submit.innerText="✅ Submit Quiz";
+submit.onclick=()=>{
+
+let score=0;
+let attempted=Object.keys(answers).length;
+
+questions.forEach((q,index)=>{
+if(answers[index]===q.correct)score++;
+});
+
+let result=document.getElementById("quizResult");
+
+if(!result){
+result=document.createElement("div");
+result.id="quizResult";
+result.className="quiz-result";
+area.appendChild(result);
+}
+
+result.style.display="block";
+result.innerHTML=
+"<h3>🎉 Quiz Result</h3>"+
+"<p>மொத்த கேள்விகள்: "+questions.length+"</p>"+
+"<p>பதிலளித்தவை: "+attempted+"</p>"+
+"<p>சரியான விடைகள்: "+score+"</p>"+
+"<h2>மதிப்பெண்: "+score+" / "+questions.length+"</h2>";
+
+};
+
+area.appendChild(submit);
+
+}
+
+/* BACK BUTTONS */
+
+function goHome(){
+showPage("home");
+}
+
+function goSubjects(){
+showPage("subjectsPage");
+}
+
+function goChapters(){
+showPage("chaptersPage");
+}
+
+showPage("home");
+
+</script>
+</body>
+</html>
+
 
