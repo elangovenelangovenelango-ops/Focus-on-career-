@@ -1,388 +1,334 @@
 
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#263b91">
-<title>Focus on Career</title>
+<title>Focus on Career - Study Guide</title>
 
 <style>
 *{box-sizing:border-box}
 body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f3f5fb;
- color:#222;
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f4f9;
+  color:#202124;
 }
 header{
- background:linear-gradient(135deg,#263b91,#536ee5);
- color:white;
- text-align:center;
- padding:25px 12px;
+  background:#293f91;
+  color:white;
+  padding:22px 15px;
+  text-align:center;
 }
-header h1{margin:0;font-size:27px}
-header p{margin:8px 0 0}
-.container{max-width:750px;margin:auto;padding:15px}
-.title{font-size:20px;font-weight:bold;margin:22px 0 12px}
-.classes,.mediums{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:10px;
-}
-.mediums{grid-template-columns:repeat(2,1fr)}
+header h2{margin:0 0 8px}
+header p{margin:5px}
+.container{padding:20px;max-width:850px;margin:auto}
+.hidden{display:none!important}
 .card{
- border:0;
- background:white;
- border-radius:14px;
- padding:18px 8px;
- font-size:17px;
- font-weight:bold;
- color:#263b91;
- box-shadow:0 2px 8px #ddd;
- cursor:pointer;
+  background:white;
+  padding:25px;
+  margin:18px 0;
+  border-radius:22px;
+  box-shadow:0 4px 12px #00000012;
 }
-.card.active{
- background:#263b91;
- color:white;
+h2{font-size:25px}
+h3{font-size:23px}
+p{font-size:18px;line-height:1.5}
+button,.btn{
+  display:inline-block;
+  border:0;
+  border-radius:12px;
+  padding:14px 18px;
+  background:#293f91;
+  color:white;
+  font-size:16px;
+  margin:6px 4px;
+  cursor:pointer;
+  text-decoration:none;
 }
-.mediums .card{padding:20px 5px}
-.search{
- width:100%;
- padding:14px;
- border:1px solid #ddd;
- border-radius:12px;
- font-size:16px;
- margin:12px 0;
-}
-.subjects{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
+button:hover,.btn:hover{opacity:.85}
+.back{background:#555}
+select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:17px;
+  margin:10px 0;
+  background:white;
 }
 .subject{
- background:white;
- border:0;
- border-radius:13px;
- padding:17px 12px;
- text-align:left;
- font-size:16px;
- font-weight:bold;
- box-shadow:0 2px 8px #ddd;
- cursor:pointer;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  margin:12px 0;
+  box-shadow:0 3px 9px #0001;
+  font-size:19px;
+  cursor:pointer;
 }
-.subject span{
- display:block;
- font-size:12px;
- color:#777;
- margin-top:7px;
+.subject:hover{background:#eef1ff}
+.material{
+  background:white;
+  padding:22px;
+  border-radius:20px;
+  margin:18px 0;
+  box-shadow:0 4px 12px #0001;
 }
-.chapter{
- background:white;
- padding:16px;
- margin:11px 0;
- border-radius:12px;
- box-shadow:0 2px 7px #ddd;
+.material h3{margin-top:5px}
+.material a{
+  display:inline-block;
+  background:#293f91;
+  color:white;
+  padding:12px 15px;
+  margin-top:8px;
+  border-radius:10px;
+  text-decoration:none;
 }
-button.action{
- background:#263b91;
- color:white;
- border:0;
- padding:11px 15px;
- border-radius:8px;
- margin-top:8px;
- cursor:pointer;
-}
-.back{
- background:#555;
- color:white;
- border:0;
- padding:11px 18px;
- border-radius:8px;
- margin:10px 0;
-}
-.resource{
- background:#eef2ff;
- padding:13px;
- border-radius:10px;
- margin-top:10px;
-}
-.resource a{
- color:#263b91;
- font-weight:bold;
-}
+.material .download{background:#16834a}
 footer{
- background:#202d68;
- color:white;
- text-align:center;
- padding:28px 12px;
- margin-top:30px;
+  text-align:center;
+  padding:25px;
+  background:#293f91;
+  color:white;
+  margin-top:30px;
 }
-footer a{
- display:inline-block;
- background:#e62117;
- color:white;
- padding:12px 20px;
- border-radius:25px;
- text-decoration:none;
- font-weight:bold;
- margin:10px;
-}
-.hidden{display:none!important}
-.note{font-size:13px;color:#777;line-height:1.6}
+footer a{color:#ffeb65}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>📚 Focus on Career</h1>
-<p>Learn • Practice • Succeed</p>
-<p>10th | 11th | 12th Standard</p>
+<h2>📚 Focus on Career</h2>
+<p>TN School Study Materials</p>
+<p>Tamil Medium | English Medium</p>
 </header>
 
 <div class="container">
 
-<!-- MEDIUM SELECTION -->
-<div id="home">
+<!-- HOME -->
+<section id="home">
+<div class="card">
+<h2>🎓 Welcome Students!</h2>
+<p>Choose Your Class / உங்கள் வகுப்பை தேர்வு செய்யுங்கள்</p>
 
-<div class="title">🌐 Select Medium / பயிற்று மொழி</div>
-
-<div class="mediums">
-<button class="card active" onclick="selectMedium('TM',this)">
-தமிழ் வழி
-<br><small>Tamil Medium</small>
-</button>
-
-<button class="card" onclick="selectMedium('EM',this)">
-English Medium
-<br><small>ஆங்கில வழி</small>
-</button>
+<button onclick="selectClass(10)">10th Standard</button>
+<button onclick="selectClass(11)">11th Standard</button>
+<button onclick="selectClass(12)">12th Standard</button>
 </div>
+</section>
 
-<!-- CLASS SELECTION -->
-<div class="title">🎓 Select Your Class</div>
-
-<div class="classes">
-<button class="card active" onclick="selectClass(10,this)">10th</button>
-<button class="card" onclick="selectClass(11,this)">11th</button>
-<button class="card" onclick="selectClass(12,this)">12th</button>
+<!-- MEDIUM -->
+<section id="mediumPage" class="hidden">
+<button class="back" onclick="goHome()">⬅ Back</button>
+<div class="card">
+<h2>🌐 Select Medium</h2>
+<button onclick="selectMedium('TM')">தமிழ் வழி (Tamil Medium)</button>
+<button onclick="selectMedium('EM')">English Medium</button>
 </div>
+</section>
 
-<div class="title">📖 All Subjects Guide</div>
-
-<input class="search" id="search"
-placeholder="Search Subject / பாடத்தைத் தேடுங்கள்..."
-oninput="showSubjects()">
-
-<div class="subjects" id="subjectList"></div>
+<!-- SUBJECTS -->
+<section id="subjectsPage" class="hidden">
+<button class="back" onclick="goHome()">⬅ Home</button>
+<div class="card">
+<h2 id="subjectTitle">Subjects</h2>
+<div id="subjectList"></div>
 </div>
+</section>
 
-<!-- CHAPTER PAGE -->
-<div id="chaptersPage" class="hidden">
-<button class="back" onclick="goHome()">← Back</button>
-<div class="title" id="subjectTitle"></div>
-<p>📚 Select Chapter / பாடத்தைத் தேர்வு செய்யவும்</p>
+<!-- CHAPTERS -->
+<section id="chaptersPage" class="hidden">
+<button class="back" onclick="goSubjects()">⬅ Subjects</button>
+<div class="card">
+<h2 id="chaptersTitle">Chapters</h2>
 <div id="chapterList"></div>
 </div>
+</section>
 
-<!-- MATERIAL PAGE -->
-<div id="materialPage" class="hidden">
-<button class="back" onclick="goChapters()">← Back</button>
+<!-- MATERIALS -->
+<section id="materialPage" class="hidden">
+<button class="back" onclick="goChapters()">⬅ Chapters</button>
+<button class="back" onclick="goHome()">🏠 Home</button>
 
-<div class="title" id="chapterTitle"></div>
+<h2 id="chapterTitle"></h2>
 
-<div class="chapter">
+<div class="material" id="studyArea">
 <h3>📘 Study Materials</h3>
-<p>Chapter-wise Study Materials</p>
-<div id="studyArea"></div>
 </div>
 
-<div class="chapter">
+<div class="material" id="notesArea">
 <h3>📝 Notes / குறிப்புகள்</h3>
-<div id="notesArea"></div>
 </div>
 
-<div class="chapter">
+<div class="material" id="booksArea">
 <h3>📚 Books / பாடப்புத்தகங்கள்</h3>
-<div id="booksArea"></div>
 </div>
 
-<div class="chapter">
+<div class="material" id="guideArea">
+<h3>📕 Extra Books + Guides</h3>
+</div>
+
+<div class="material" id="questionsArea">
 <h3>⭐ Important Questions</h3>
-<div id="questionsArea"></div>
 </div>
 
-<div class="chapter">
-<h3>📄 PDF Download</h3>
-<div id="pdfArea"></div>
+<div class="material" id="pdfArea">
+<h3>📄 PDF Materials</h3>
 </div>
 
-<div class="chapter">
+<div class="material" id="modelArea">
 <h3>📝 Model Question Papers</h3>
-<div id="modelArea"></div>
 </div>
 
-<p class="note">
-Study materials and PDF links will be updated here.
-</p>
-</div>
+</section>
 
 </div>
 
 <footer>
-<h2>📚 Focus on Career</h2>
-<p>Developed by EJ Seliyan</p>
-<a href="https://www.youtube.com/results?search_query=_badboy1"
-target="_blank">
-▶ Subscribe to _badboy1 YouTube Channel
-</a>
-<p>© 2026 Focus on Career | All Rights Reserved</p>
+<h3>Developed by EJ Seliyan</h3>
+<p>Subscribe to <a href="https://www.youtube.com/results?search_query=_badboy1" target="_blank">_badboy1 YouTube Channel</a></p>
+<p>© Focus on Career</p>
 </footer>
 
 <script>
 
-// SUBJECT DATABASE
-const subjectData={
-10:[
-["தமிழ்","Tamil"],
-["ஆங்கிலம்","English"],
-["கணிதம்","Mathematics"],
-["அறிவியல்","Science"],
-["சமூக அறிவியல்","Social Science"]
-],
-11:[
-["தமிழ்","Tamil"],
-["ஆங்கிலம்","English"],
-["கணிதம்","Mathematics"],
-["இயற்பியல்","Physics"],
-["வேதியியல்","Chemistry"],
-["தாவரவியல்","Bio-Botany"],
-["விலங்கியல்","Bio-Zoology"],
-["கணினி அறிவியல்","Computer Science"],
-["கணினி பயன்பாடுகள்","Computer Applications"],
-["வணிகவியல்","Commerce"],
-["கணக்குப்பதிவியல்","Accountancy"],
-["பொருளியல்","Economics"],
-["வணிகக் கணிதம்","Business Mathematics"],
-["வரலாறு","History"],
-["புவியியல்","Geography"],
-["அரசியல் அறிவியல்","Political Science"]
-],
-12:[
-["தமிழ்","Tamil"],
-["ஆங்கிலம்","English"],
-["கணிதம்","Mathematics"],
-["இயற்பியல்","Physics"],
-["வேதியியல்","Chemistry"],
-["தாவரவியல்","Bio-Botany"],
-["விலங்கியல்","Bio-Zoology"],
-["கணினி அறிவியல்","Computer Science"],
-["கணினி பயன்பாடுகள்","Computer Applications"],
-["வணிகவியல்","Commerce"],
-["கணக்குப்பதிவியல்","Accountancy"],
-["பொருளியல்","Economics"],
-["வணிகக் கணிதம்","Business Mathematics"],
-["வரலாறு","History"],
-["புவியியல்","Geography"],
-["அரசியல் அறிவியல்","Political Science"]
-]
-};
-
-let currentClass=10;
+let currentClass=11;
 let currentMedium="TM";
 let currentSubject="";
 let currentChapter=1;
 
-function selectMedium(m,btn){
-currentMedium=m;
-document.querySelectorAll(".mediums .card")
-.forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-showSubjects();
+const subjects={
+10:{
+TM:["தமிழ்","ஆங்கிலம்","கணிதம்","அறிவியல்","சமூக அறிவியல்"],
+EM:["Tamil","English","Mathematics","Science","Social Science"]
+},
+11:{
+TM:["தமிழ்","ஆங்கிலம்","கணிதம்","இயற்பியல்","வேதியியல்","தாவரவியல்","விலங்கியல்","கணினி அறிவியல்","வணிகவியல்","கணக்குப்பதிவியல்","பொருளியல்"],
+EM:["Tamil","English","Mathematics","Physics","Chemistry","Botany","Zoology","Computer Science","Commerce","Accountancy","Economics"]
+},
+12:{
+TM:["தமிழ்","ஆங்கிலம்","கணிதம்","இயற்பியல்","வேதியியல்","தாவரவியல்","விலங்கியல்","கணினி அறிவியல்","வணிகவியல்","கணக்குப்பதிவியல்","பொருளியல்"],
+EM:["Tamil","English","Mathematics","Physics","Chemistry","Botany","Zoology","Computer Science","Commerce","Accountancy","Economics"]
+}
+};
+
+function showPage(id){
+["home","mediumPage","subjectsPage",
+"chaptersPage","materialPage"].forEach(page=>{
+document.getElementById(page).classList.add("hidden");
+});
+document.getElementById(id).classList.remove("hidden");
 }
 
-function selectClass(n,btn){
+function selectClass(n){
 currentClass=n;
-document.querySelectorAll(".classes .card")
-.forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
+showPage("mediumPage");
+}
+
+function selectMedium(m){
+currentMedium=m;
 showSubjects();
 }
 
 function showSubjects(){
+showPage("subjectsPage");
+
+document.getElementById("subjectTitle").innerText=
+currentClass+"th Standard • "+
+(currentMedium==="TM"?"தமிழ் வழி":"English Medium");
+
 let list=document.getElementById("subjectList");
-let search=document.getElementById("search").value.toLowerCase();
 list.innerHTML="";
 
-subjectData[currentClass].forEach(s=>{
-let name=currentMedium==="TM"?s[0]:s[1];
-
-if(!name.toLowerCase().includes(search) &&
-!s[0].toLowerCase().includes(search) &&
-!s[1].toLowerCase().includes(search))return;
-
-let b=document.createElement("button");
-b.className="subject";
-b.innerHTML="📘 "+name+
-"<span>Class "+currentClass+" • "+
-(currentMedium==="TM"?"தமிழ் வழி":"English Medium")+
-"</span>";
-b.onclick=()=>openSubject(name);
-list.appendChild(b);
+subjects[currentClass][currentMedium].forEach(subject=>{
+let div=document.createElement("div");
+div.className="subject";
+div.innerText="📖 "+subject;
+div.onclick=()=>openSubject(subject);
+list.appendChild(div);
 });
 }
 
-function openSubject(name){
-currentSubject=name;
+function openSubject(subject){
+currentSubject=subject;
+showPage("chaptersPage");
 
-document.getElementById("home").classList.add("hidden");
-document.getElementById("chaptersPage").classList.remove("hidden");
-
-document.getElementById("subjectTitle").innerText=
-"Class "+currentClass+" • "+name;
+document.getElementById("chaptersTitle").innerText=
+currentSubject+" • Chapters";
 
 let list=document.getElementById("chapterList");
 list.innerHTML="";
 
 for(let i=1;i<=15;i++){
-let div=document.createElement("div");
-div.className="chapter";
-
 let btn=document.createElement("button");
-btn.className="action";
-btn.innerText="Open Study Material";
+btn.innerText="Chapter "+i;
 btn.onclick=()=>openChapter(i);
-
-let heading=document.createElement("b");
-heading.innerText="Chapter "+i;
-
-div.appendChild(heading);
-div.appendChild(document.createElement("br"));
-div.appendChild(btn);
-list.appendChild(div);
+list.appendChild(btn);
 }
 }
 
 function openChapter(n){
 currentChapter=n;
-
-document.getElementById("chaptersPage").classList.add("hidden");
-document.getElementById("materialPage").classList.remove("hidden");
+showPage("materialPage");
 
 document.getElementById("chapterTitle").innerText=
 currentSubject+" • Chapter "+n;
 
-let message=currentMedium==="TM"?
-"தமிழ் வழி பாடக்குறிப்புகள் விரைவில் சேர்க்கப்படும்.":
-"English medium study materials will be added soon.";
+const folder=
+"materials/"+currentClass+"/"+currentMedium+"/"+
+encodeURIComponent(currentSubject)+"/chapter-"+n+"/";
 
-["studyArea","notesArea","booksArea",
-"questionsArea","pdfArea","modelArea"].forEach(id=>{
-document.getElementById(id).innerText=message;
+const materials=[
+{
+id:"studyArea",
+title:"📘 Study Materials",
+file:"study-material.pdf"
+},
+{
+id:"notesArea",
+title:"📝 Notes / குறிப்புகள்",
+file:"notes.pdf"
+},
+{
+id:"booksArea",
+title:"📚 Books / பாடப்புத்தகங்கள்",
+file:"book.pdf"
+},
+{
+id:"guideArea",
+title:"📕 Extra Books + Guides",
+file:"guide.pdf"
+},
+{
+id:"questionsArea",
+title:"⭐ Important Questions",
+file:"important-questions.pdf"
+},
+{
+id:"pdfArea",
+title:"📄 PDF Materials",
+file:"chapter-pdf.pdf"
+},
+{
+id:"modelArea",
+title:"📝 Model Question Papers",
+file:"model-paper.pdf"
+}
+];
+
+materials.forEach(item=>{
+let area=document.getElementById(item.id);
+
+let url=folder+item.file;
+
+area.innerHTML=
+"<h3>"+item.title+"</h3>"+
+'<a href="'+url+'" target="_blank">📖 Open PDF</a>'+
+'<a class="download" href="'+url+'" download>⬇ Download PDF</a>';
 });
 
-// Existing PDF available in repository
+// Existing Botany Practical PDF
 if(currentClass===11 &&
 currentMedium==="TM" &&
 currentSubject==="தாவரவியல்" &&
@@ -390,29 +336,29 @@ n===1){
 
 let a=document.createElement("a");
 a.href="11th%20Bio-Botany%20TM%20Practical%20notes.pdf";
+a.target="_blank";
 a.download="";
-a.innerText="Download Botany Practical Notes PDF";
+a.innerText="⬇ Download Botany Practical Notes PDF";
 
-document.getElementById("pdfArea").innerHTML="";
 document.getElementById("pdfArea").appendChild(a);
 }
 }
 
 function goHome(){
-document.getElementById("chaptersPage").classList.add("hidden");
-document.getElementById("materialPage").classList.add("hidden");
-document.getElementById("home").classList.remove("hidden");
+showPage("home");
+}
+
+function goSubjects(){
+showPage("subjectsPage");
 }
 
 function goChapters(){
-document.getElementById("materialPage").classList.add("hidden");
-document.getElementById("chaptersPage").classList.remove("hidden");
+showPage("chaptersPage");
 }
 
-showSubjects();
+showPage("home");
 
 </script>
 </body>
-    </html>
+ </html>
 
-            
